@@ -1,0 +1,20 @@
+invoice_id,date,vendor,expected_total
+INV-2026-001,2026-11-02,TechSupply Corp S.A.,455.99
+INV-2026-002,2026-11-03,TechSupply Corp S.A.,1026.28
+INV-2026-003,2026-11-04,Apex Office Supplies,1102.25
+INV-2026-004,2026-11-05,Apex Office Supplies,1110.97
+INV-2026-005,2026-11-06,CloudHost Solutions Ltd.,1302.5
+INV-2026-006,2026-11-07,DataLogistics Global S.A.,1064.81
+INV-2026-007,2026-11-08,TechSupply Corp S.A.,2064.29
+INV-2026-008,2026-11-09,DataLogistics Global S.A.,791.32
+INV-2026-009,2026-11-10,DataLogistics Global S.A.,996.7
+INV-2026-010,2026-11-11,TechSupply Corp S.A.,1715.65
+INV-2026-011,2026-11-12,TechSupply Corp S.A.,371.58
+INV-2026-012,2026-11-13,DataLogistics Global S.A.,873.4
+INV-2026-013,2026-11-14,DataLogistics Global S.A.,844.35
+INV-2026-014,2026-11-15,NovaSoft Services Inc.,332.2
+INV-2026-016,2026-11-17,TechSupply Corp S.A.,603.93
+INV-2026-017,2026-11-18,NovaSoft Services Inc.,1583.15
+INV-2026-018,2026-11-19,Apex Office Supplies,766.89
+INV-2026-019,2026-11-20,DataLogistics Global S.A.,2337.69
+INV-2026-020,2026-11-21,CloudHost Solutions Ltd.,4024.19
