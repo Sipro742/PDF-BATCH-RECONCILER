@@ -58,7 +58,8 @@ def main() -> None:
         print("Los montos por factura coinciden al 100%.")
     else:
         print("Diferencias encontradas:")
-        print(diferencias)
+        print(diferencias)  
+    return diferencias
 
 
 if __name__ == "__main__":
