@@ -1,59 +1,59 @@
-﻿Descripcion,Cant.,Precio Unit.,Importe
-Soporte Tecnico Mensual,3,$135.71,$407.13
-Descripcion,Cant.,Precio Unit.,Importe
-Consultoria de Automatizacion,5,$80.43,$402.15
-Soporte Tecnico Mensual,1,$60.43,$60.43
-Licencia de Software Anual,2,$226.87,$453.74
-Descripcion,Cant.,Precio Unit.,Importe
-Consultoria de Automatizacion,5,$196.83,$984.15
-Descripcion,Cant.,Precio Unit.,Importe
-Soporte Tecnico Mensual,1,$315.58,$315.58
-Soporte Tecnico Mensual,4,$169.09,$676.36
-Descripcion,Cant.,Precio Unit.,Importe
-Licencia de Software Anual,1,$82.46,$82.46
-Mantenimiento Preventivo de Red,3,$346.62,"$1,039.86"
-Descripcion,Cant.,Precio Unit.,Importe
-Consultoria de Automatizacion,4,$237.68,$950.72
-Descripcion,Cant.,Precio Unit.,Importe
-Mantenimiento Preventivo de Red,3,$340.29,"$1,020.87"
-Suscripcion API Empresarial,3,$252.07,$756.21
-Soporte Tecnico Mensual,1,$66.04,$66.04
-Descripcion,Cant.,Precio Unit.,Importe
-Alojamiento en la Nube (Servidor),3,$106.93,$320.79
-Suscripcion API Empresarial,2,$284.56,$569.12
-Descripcion,Cant.,Precio Unit.,Importe
-Soporte Tecnico Mensual,2,$236.95,$473.90
-Alojamiento en la Nube (Servidor),2,$211.79,$423.58
-Alojamiento en la Nube (Servidor),5,$126.87,$634.35
-Descripcion,Cant.,Precio Unit.,Importe
-Consultoria de Automatizacion,1,$331.77,$331.77
-Descripcion,Cant.,Precio Unit.,Importe
-Mantenimiento Preventivo de Red,2,$369.60,$739.20
-Descripcion,Cant.,Precio Unit.,Importe
-Suscripcion API Empresarial,4,$188.47,$753.88
-Descripcion,Cant.,Precio Unit.,Importe
-Suscripcion API Empresarial,3,$98.87,$296.61
-Descripcion,Cant.,Precio Unit.,Importe
-Consultoria de Automatizacion,3,$311.45,$934.35
-Soporte Tecnico Mensual,5,$189.79,$948.95
-Licencia de Software Anual,2,$228.33,$456.66
-Descripcion,Cant.,Precio Unit.,Importe
-Suscripcion API Empresarial,2,$269.61,$539.22
-Descripcion,Cant.,Precio Unit.,Importe
-Mantenimiento Preventivo de Red,1,$184.67,$184.67
-Mantenimiento Preventivo de Red,4,$235.19,$940.76
-Licencia de Software Anual,1,$288.10,$288.10
-Descripcion,Cant.,Precio Unit.,Importe
-Consultoria de Automatizacion,3,$89.04,$267.12
-Suscripcion API Empresarial,2,$208.80,$417.60
-Descripcion,Cant.,Precio Unit.,Importe
-Consultoria de Automatizacion,3,$89.04,$267.12
-Suscripcion API Empresarial,2,$208.80,$417.60
-Descripcion,Cant.,Precio Unit.,Importe
-Licencia de Software Anual,2,$227.69,$455.38
-Mantenimiento Preventivo de Red,3,$344.58,"$1,033.74"
-Alojamiento en la Nube (Servidor),5,$119.62,$598.10
-Descripcion,Cant.,Precio Unit.,Importe
-Mantenimiento Preventivo de Red,5,$371.47,"$1,857.35"
-Licencia de Software Anual,3,$221.01,$663.03
-Alojamiento en la Nube (Servidor),3,$357.55,"$1,072.65"
+﻿Descripcion,Cant.,Precio Unit.,Importe,INV-2026-001
+Soporte Tecnico Mensual,3,$135.71,$407.13,INV-2026-001
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-002
+Consultoria de Automatizacion,5,$80.43,$402.15,INV-2026-002
+Soporte Tecnico Mensual,1,$60.43,$60.43,INV-2026-002
+Licencia de Software Anual,2,$226.87,$453.74,INV-2026-002
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-003
+Consultoria de Automatizacion,5,$196.83,$984.15,INV-2026-003
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-004
+Soporte Tecnico Mensual,1,$315.58,$315.58,INV-2026-004
+Soporte Tecnico Mensual,4,$169.09,$676.36,INV-2026-004
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-005
+Licencia de Software Anual,1,$82.46,$82.46,INV-2026-005
+Mantenimiento Preventivo de Red,3,$346.62,"$1,039.86",INV-2026-005
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-006
+Consultoria de Automatizacion,4,$237.68,$950.72,INV-2026-006
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-007
+Mantenimiento Preventivo de Red,3,$340.29,"$1,020.87",INV-2026-007
+Suscripcion API Empresarial,3,$252.07,$756.21,INV-2026-007
+Soporte Tecnico Mensual,1,$66.04,$66.04,INV-2026-007
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-009
+Alojamiento en la Nube (Servidor),3,$106.93,$320.79,INV-2026-009
+Suscripcion API Empresarial,2,$284.56,$569.12,INV-2026-009
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-010
+Soporte Tecnico Mensual,2,$236.95,$473.90,INV-2026-010
+Alojamiento en la Nube (Servidor),2,$211.79,$423.58,INV-2026-010
+Alojamiento en la Nube (Servidor),5,$126.87,$634.35,INV-2026-010
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-011
+Consultoria de Automatizacion,1,$331.77,$331.77,INV-2026-011
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-012
+Mantenimiento Preventivo de Red,2,$369.60,$739.20,INV-2026-012
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-013
+Suscripcion API Empresarial,4,$188.47,$753.88,INV-2026-013
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-014
+Suscripcion API Empresarial,3,$98.87,$296.61,INV-2026-014
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-015
+Consultoria de Automatizacion,3,$311.45,$934.35,INV-2026-015
+Soporte Tecnico Mensual,5,$189.79,$948.95,INV-2026-015
+Licencia de Software Anual,2,$228.33,$456.66,INV-2026-015
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-016
+Suscripcion API Empresarial,2,$269.61,$539.22,INV-2026-016
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-017
+Mantenimiento Preventivo de Red,1,$184.67,$184.67,INV-2026-017
+Mantenimiento Preventivo de Red,4,$235.19,$940.76,INV-2026-017
+Licencia de Software Anual,1,$288.10,$288.10,INV-2026-017
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-018
+Consultoria de Automatizacion,3,$89.04,$267.12,INV-2026-018
+Suscripcion API Empresarial,2,$208.80,$417.60,INV-2026-018
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-018
+Consultoria de Automatizacion,3,$89.04,$267.12,INV-2026-018
+Suscripcion API Empresarial,2,$208.80,$417.60,INV-2026-018
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-019
+Licencia de Software Anual,2,$227.69,$455.38,INV-2026-019
+Mantenimiento Preventivo de Red,3,$344.58,"$1,033.74",INV-2026-019
+Alojamiento en la Nube (Servidor),5,$119.62,$598.10,INV-2026-019
+Descripcion,Cant.,Precio Unit.,Importe,INV-2026-020
+Mantenimiento Preventivo de Red,5,$371.47,"$1,857.35",INV-2026-020
+Licencia de Software Anual,3,$221.01,$663.03,INV-2026-020
+Alojamiento en la Nube (Servidor),3,$357.55,"$1,072.65",INV-2026-020
