@@ -1,13 +1,13 @@
+"""Generador de facturas PDF y CSV maestro de prueba con escenarios controlados."""
+
 import csv
-import random
 from datetime import date, timedelta
 from pathlib import Path
+import random
+
 from fpdf import FPDF
 
-# Rutas de salida
-DIRECTORIO_BASE = Path(__file__).resolve().parent.parent
-CARPETA_FACTURAS = DIRECTORIO_BASE / "data" / "invoices"
-RUTA_CSV_MAESTRO = DIRECTORIO_BASE / "data" / "registro_maestro.csv"
+from models import CARPETA_INVOICES_PRUEBA, RUTA_CSV_PRUEBA
 
 PROVEEDORES = [
     ("TechSupply Corp S.A.", "1234567-8"),
@@ -26,9 +26,18 @@ SERVICIOS = [
     "Suscripcion API Empresarial",
 ]
 
+# Fuente única de verdad de los escenarios inyectados para autoverificación
+ESCENARIOS_PRUEBA: dict[str, str] = {
+    "INV-2026-005": "DIFERENCIA_MONTO",
+    "INV-2026-012": "DIFERENCIA_MONTO",
+    "INV-2026-008": "FALTA_PDF",
+    "INV-2026-015": "FALTA_MAESTRO",
+    "INV-2026-018": "PDF_DUPLICADO",
+}
+
 
 def crear_pdf_factura(ruta_archivo: Path, datos_factura: dict) -> None:
-    """Genera una factura comercial en PDF con fpdf2."""
+    """Genera una factura comercial en PDF usando fpdf2."""
     pdf = FPDF()
     pdf.add_page()
     pdf.set_auto_page_break(auto=True, margin=15)
@@ -60,7 +69,15 @@ def crear_pdf_factura(ruta_archivo: Path, datos_factura: dict) -> None:
         pdf.cell(95, 8, concepto["descripcion"], border=1)
         pdf.cell(25, 8, str(concepto["cantidad"]), border=1, align="C")
         pdf.cell(35, 8, f"${concepto['precio_unitario']:,.2f}", border=1, align="R")
-        pdf.cell(35, 8, f"${concepto['importe']:,.2f}", border=1, align="R", new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(
+            35,
+            8,
+            f"${concepto['importe']:,.2f}",
+            border=1,
+            align="R",
+            new_x="LMARGIN",
+            new_y="NEXT",
+        )
 
     pdf.ln(6)
 
@@ -79,12 +96,23 @@ def crear_pdf_factura(ruta_archivo: Path, datos_factura: dict) -> None:
     pdf.output(str(ruta_archivo))
 
 
-def generar_datos_prueba(total_registros: int = 20) -> None:
-    """Crea el lote de PDFs y el CSV maestro con errores intencionales."""
-    CARPETA_FACTURAS.mkdir(parents=True, exist_ok=True)
-    random.seed(42)  # Semilla fija para generar siempre los mismos datos
+def generar_datos_prueba(
+    total_registros: int = 20,
+    carpeta_facturas: Path = CARPETA_INVOICES_PRUEBA,
+    ruta_csv_maestro: Path = RUTA_CSV_PRUEBA,
+) -> dict:
+    """Crea el lote de PDFs y el CSV maestro de prueba en rutas aisladas."""
+    carpeta_facturas.mkdir(parents=True, exist_ok=True)
+    ruta_csv_maestro.parent.mkdir(parents=True, exist_ok=True)
 
-    filas_maestro = []
+    # Limpia PDFs previos del directorio de prueba para evitar residuos de lotes anteriores
+    for archivo in carpeta_facturas.iterdir():
+        if archivo.is_file() and archivo.suffix.lower() == ".pdf":
+            archivo.unlink()
+
+    random.seed(42)
+    filas_maestro: list[list] = []
+    pdfs_creados = 0
     fecha_inicio = date(2026, 11, 1)
 
     for numero in range(1, total_registros + 1):
@@ -92,7 +120,6 @@ def generar_datos_prueba(total_registros: int = 20) -> None:
         fecha_factura = (fecha_inicio + timedelta(days=numero)).isoformat()
         proveedor, nit = random.choice(PROVEEDORES)
 
-        # Generar entre 1 y 3 conceptos por factura
         conceptos = []
         for _ in range(random.randint(1, 3)):
             cantidad = random.randint(1, 5)
@@ -120,41 +147,39 @@ def generar_datos_prueba(total_registros: int = 20) -> None:
             "total": total,
         }
 
-        # --- INYECCION DE ESCENARIOS DE PRUEBA ---
-        # 1. Facturas 5 y 12: Diferencia de monto entre PDF y CSV maestro
         if numero in (5, 12):
-            crear_pdf_factura(CARPETA_FACTURAS / f"{id_factura}.pdf", datos_factura)
-            total_alterado = round(total + 45.50, 2)
-            filas_maestro.append([id_factura, fecha_factura, proveedor, total_alterado])
-
-        # 2. Factura 8: Existe en el CSV maestro, pero FALTA el archivo PDF
+            crear_pdf_factura(carpeta_facturas / f"{id_factura}.pdf", datos_factura)
+            pdfs_creados += 1
+            filas_maestro.append([id_factura, fecha_factura, proveedor, round(total + 45.50, 2)])
         elif numero == 8:
             filas_maestro.append([id_factura, fecha_factura, proveedor, total])
-
-        # 3. Factura 15: Existe el archivo PDF, pero FALTA en el CSV maestro
         elif numero == 15:
-            crear_pdf_factura(CARPETA_FACTURAS / f"{id_factura}.pdf", datos_factura)
-
-        # 4. Factura 18: PDF DUPLICADO (dos archivos distintos con el mismo ID)
+            crear_pdf_factura(carpeta_facturas / f"{id_factura}.pdf", datos_factura)
+            pdfs_creados += 1
         elif numero == 18:
-            crear_pdf_factura(CARPETA_FACTURAS / f"{id_factura}.pdf", datos_factura)
-            crear_pdf_factura(CARPETA_FACTURAS / f"{id_factura}_copia.pdf", datos_factura)
+            crear_pdf_factura(carpeta_facturas / f"{id_factura}.pdf", datos_factura)
+            crear_pdf_factura(carpeta_facturas / f"{id_factura}_copia.pdf", datos_factura)
+            pdfs_creados += 2
             filas_maestro.append([id_factura, fecha_factura, proveedor, total])
-
-        # 5. Resto de facturas: Conciliacion OK
         else:
-            crear_pdf_factura(CARPETA_FACTURAS / f"{id_factura}.pdf", datos_factura)
+            crear_pdf_factura(carpeta_facturas / f"{id_factura}.pdf", datos_factura)
+            pdfs_creados += 1
             filas_maestro.append([id_factura, fecha_factura, proveedor, total])
 
-    # Guardar archivo maestro CSV
-    with open(RUTA_CSV_MAESTRO, mode="w", newline="", encoding="utf-8") as archivo:
+    with open(ruta_csv_maestro, mode="w", newline="", encoding="utf-8") as archivo:
         escritor = csv.writer(archivo)
         escritor.writerow(["id_factura", "fecha", "proveedor", "total_esperado"])
         escritor.writerows(filas_maestro)
 
-    print(f"PDFs generados en: {CARPETA_FACTURAS}")
-    print(f"CSV maestro generado en: {RUTA_CSV_MAESTRO}")
+    return {
+        "carpeta_facturas": carpeta_facturas,
+        "ruta_csv_maestro": ruta_csv_maestro,
+        "pdfs_creados": pdfs_creados,
+        "registros_maestro": len(filas_maestro),
+    }
 
 
 if __name__ == "__main__":
-    generar_datos_prueba()
+    resumen = generar_datos_prueba()
+    print(f"PDFs generados ({resumen['pdfs_creados']}): {resumen['carpeta_facturas']}")
+    print(f"CSV maestro ({resumen['registros_maestro']}): {resumen['ruta_csv_maestro']}")
